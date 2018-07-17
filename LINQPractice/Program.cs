@@ -15,13 +15,22 @@ namespace LINQPractice
 
             var resultList = words.Where(w => w.Contains("th"));
 
-            foreach(string result in resultList)
+            foreach(var result in resultList)
             {
                 Console.WriteLine(result);
             }
             Console.ReadLine();
 
             //Problem 2
+            List<string> names = new List<string>() { "Mike", "Dan", "Scott", "Nick", "Mike" };
+
+            var singleNameList = names.Distinct();
+
+            foreach (var result in singleNameList)
+            {
+                Console.WriteLine(result);
+            }
+            Console.ReadLine();
         }
     }
 }
