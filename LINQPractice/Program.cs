@@ -31,6 +31,34 @@ namespace LINQPractice
                 Console.WriteLine(result);
             }
             Console.ReadLine();
+
+            //Problem 3
+            List<string> classGrades = new List<string>()
+                    {
+                    "80,100,92,89,65", //90.25
+                    "93,81,78,84,69", //84
+                    "73,88,83,99,64", //85.75
+                    "98,100,66,74,55" //84.5
+                    //86.125
+                    };
+
+            var classGradesAsNunmbers = classGrades.Select(g => g.Split(',').Select(m => double.Parse(m)));
+            var classGradesLowestDropped = classGradesAsNunmbers.Select(g => g.Where(m => m != g.Min()));
+            var classGradeAverages = classGradesLowestDropped.Select(g => g.Average());
+            Console.WriteLine(classGradeAverages.Average());
+            
+
+            //Problem 4
+
+            string testString = "Terrill";
+
+            var letterAndFrequency = testString.ToUpper().GroupBy(l => l).OrderBy(l => l.Key).Select(l => new { character = l.Key, count = l.Count() });
+
+            foreach (var letter in letterAndFrequency)
+            {
+                Console.WriteLine(letter.character+letter.count.ToString());
+            }
+            Console.ReadLine();
         }
     }
 }
